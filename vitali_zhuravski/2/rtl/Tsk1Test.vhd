@@ -39,31 +39,50 @@ architecture Behavioral of tsk1_test is
             sw_in : in std_logic_vector(15 downto 0)
         );
     end component;
+    
+    type test_array is array (0 to 15) of std_logic_vector(3 downto 0);
+    
+    constant test_cases : test_array := (
+        0 => "0001",
+        1 => "0010",
+        2 => "0100",
+        3 => "1000",
+        others => (others => '0')
+    );
 
     signal led_out : std_logic_vector(15 downto 0);
     signal sw_in : std_logic_vector(15 downto 0);
     
-    alias A : std_logic is sw_in(3);
-    alias B : std_logic is sw_in(2);
-    alias C : std_logic is sw_in(1);
-    alias D : std_logic is sw_in(0);
+    signal A : std_logic;
+    signal B : std_logic;
+    signal C : std_logic;
+    signal D : std_logic;
 begin
     U1 : tsk1_top port map(led_out => led_out, sw_in => sw_in);
-
+    
+    A <= sw_in(3);
+    B <= sw_in(2);
+    C <= sw_in(1);
+    D <= sw_in(0);
+    
     process
+        variable successful_tests : integer;
     begin
+        successful_tests := 0;
         for i in 0 to 15 loop
             sw_in <= std_logic_vector(to_unsigned(i, 16));
-                    wait for 10 ns;
-            report "A=" & std_logic'image(A) &
-                   " B=" & std_logic'image(B) &
-                   " C=" & std_logic'image(C) &
-                   " D=" & std_logic'image(D) &
-                   " => LED3=" & std_logic'image(led_out(3)) &
-                   " LED2=" & std_logic'image(led_out(2)) &
-                   " LED1=" & std_logic'image(led_out(1)) &
-                   " LED0=" & std_logic'image(led_out(0));
+            wait for 35 ns;
+            if led_out(3 downto 0) = test_cases(i) then
+                successful_tests := successful_tests + 1;
+                report "Test " & integer'image(i) & " succeeded.";
+            else
+                report "Failed test " & integer'image(i) & ". Input=" &
+                    integer'image(to_integer(unsigned(sw_in(3 downto 0)))) &
+                    " Actual result=" & integer'image(to_integer(unsigned(led_out(3 downto 0)))) &
+                    " Expected result=" & integer'image(to_integer(unsigned(test_cases(i))));
+            end if;
         end loop;
+        report integer'image(successful_tests) & " tests of 16 succeded.";
         wait;
     end process;
 end Behavioral;

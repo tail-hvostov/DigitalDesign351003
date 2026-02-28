@@ -4,6 +4,9 @@ use ieee.std_logic_1164.all;
 library UNISIM;
 use UNISIM.VComponents.all;
 
+library work;
+use work.domestic_components.all;
+
 entity tsk6_top is
     port (
         led_out : out std_logic_vector(15 downto 0);
@@ -16,8 +19,8 @@ end tsk6_top;
 -- D - data
 
 architecture structure of tsk6_top is
-    alias W : std_logic is sw_in(1);
-    alias D : std_logic is sw_in(0);
+    signal W : std_logic;
+    signal D : std_logic;
 
     signal Q : std_logic;
     signal nQ : std_logic;
@@ -27,6 +30,9 @@ architecture structure of tsk6_top is
     signal QnW : std_logic;
     signal Q2 : std_logic;
 begin
+    W <= sw_in(1);
+    D <= sw_in(0);
+
     led_out(15 downto 2) <= "00000000000000";
     
     U1 : LUT1
@@ -37,10 +43,10 @@ begin
         generic map (INIT => "01")
         port map (I0 => nQ, O => Q);
     
-    U3 : AND2 port map (I0 => W, I1 => D, O => WD);
-    U4 : INV port map (I => W, O => nW);
-    U5 : AND2 port map (I0 => Q, I1 => nW, O => QnW);
-    U6 : OR2 port map (I0 => WD, I1 => QnW, O => Q2);
+    U3 : DOM_AND2 port map (I0 => W, I1 => D, O => WD);
+    U4 : DOM_INV port map (I => W, O => nW);
+    U5 : DOM_AND2 port map (I0 => Q, I1 => nW, O => QnW);
+    U6 : DOM_OR2 port map (I0 => WD, I1 => QnW, O => Q2);
         
     led_out(1) <= Q2;
     led_out(0) <= nQ;
