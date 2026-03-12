@@ -67,7 +67,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param synth.incrementalSynthesisCache C:/Users/pulis/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-12208-victorya/incrSyn
+  set_param synth.incrementalSynthesisCache D:/DDS/LAB2/task6/vivado/.Xil/Vivado-5668-victorya/incrSyn
   create_project -in_memory -part xc7a35ticpg236-1L
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0

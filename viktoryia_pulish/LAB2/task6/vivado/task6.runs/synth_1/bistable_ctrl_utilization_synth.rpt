@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Thu Mar 12 14:03:58 2026
+| Date         : Thu Mar 12 21:08:46 2026
 | Host         : victorya running 64-bit major release  (build 9200)
 | Command      : report_utilization -file bistable_ctrl_utilization_synth.rpt -pb bistable_ctrl_utilization_synth.pb
 | Design       : bistable_ctrl
@@ -149,10 +149,9 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+| LUT2     |    4 |                 LUT |
 | IBUF     |    3 |                  IO |
 | OBUF     |    2 |                  IO |
-| LUT3     |    2 |                 LUT |
-| LUT2     |    2 |                 LUT |
 +----------+------+---------------------+
 
 

@@ -17,7 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param synth.incrementalSynthesisCache C:/Users/pulis/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-12208-victorya/incrSyn
+set_param synth.incrementalSynthesisCache D:/DDS/LAB2/task6/vivado/.Xil/Vivado-5668-victorya/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7a35ticpg236-1L
