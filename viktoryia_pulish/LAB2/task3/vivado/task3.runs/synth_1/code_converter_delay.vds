@@ -1,0 +1,294 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Mar 11 11:43:22 2026
+# Process ID: 7772
+# Current directory: D:/DDS/LAB2/task3/vivado/task3.runs/synth_1
+# Command line: vivado.exe -log code_converter_delay.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source code_converter_delay.tcl
+# Log file: D:/DDS/LAB2/task3/vivado/task3.runs/synth_1/code_converter_delay.vds
+# Journal file: D:/DDS/LAB2/task3/vivado/task3.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source code_converter_delay.tcl -notrace
+Command: synth_design -top code_converter_delay -part xc7a35ticpg236-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18536 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 415.043 ; gain = 96.641
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'code_converter_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:11]
+	Parameter WIDTH bound to: 5 - type: integer 
+	Parameter DELAY bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'interconnect' declared at 'D:/DDS/LAB2/task3/RTL/interconnect.vhd:4' bound to instance 'W_in' of component 'interconnect' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:39]
+INFO: [Synth 8-638] synthesizing module 'interconnect' [D:/DDS/LAB2/task3/RTL/interconnect.vhd:15]
+	Parameter WIDTH bound to: 5 - type: integer 
+	Parameter DELAY bound to: 1000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'interconnect' (1#1) [D:/DDS/LAB2/task3/RTL/interconnect.vhd:15]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task3/RTL/and2_delay.vhd:4' bound to instance 'g1' of component 'and2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'and2_delay' [D:/DDS/LAB2/task3/RTL/and2_delay.vhd:15]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'and2_delay' (2#1) [D:/DDS/LAB2/task3/RTL/and2_delay.vhd:15]
+	Parameter t_delay bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'wire_delay' declared at 'D:/DDS/LAB2/task3/RTL/wire_delay.vhd:4' bound to instance 'g1_wire' of component 'wire_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'wire_delay' [D:/DDS/LAB2/task3/RTL/wire_delay.vhd:14]
+	Parameter t_delay bound to: 1000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'wire_delay' (3#1) [D:/DDS/LAB2/task3/RTL/wire_delay.vhd:14]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'nand2_delay' declared at 'D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:4' bound to instance 'g2' of component 'nand2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'nand2_delay' [D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:15]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'nand2_delay' (4#1) [D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:15]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task3/RTL/and2_delay.vhd:4' bound to instance 'g3' of component 'and2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:47]
+	Parameter t_delay bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'wire_delay' declared at 'D:/DDS/LAB2/task3/RTL/wire_delay.vhd:4' bound to instance 'g3_wire' of component 'wire_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:48]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'nand2_delay' declared at 'D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:4' bound to instance 'g4' of component 'nand2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:49]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'nand2_delay' declared at 'D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:4' bound to instance 'g5' of component 'nand2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:51]
+	Parameter t_delay bound to: 2000000 - type: integer 
+INFO: [Synth 8-3491] module 'nand2_delay' declared at 'D:/DDS/LAB2/task3/RTL/nand2_delay.vhd:4' bound to instance 'g6' of component 'nand2_delay' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:52]
+	Parameter WIDTH bound to: 5 - type: integer 
+	Parameter DELAY bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'interconnect' declared at 'D:/DDS/LAB2/task3/RTL/interconnect.vhd:4' bound to instance 'W_out' of component 'interconnect' [D:/DDS/LAB2/task3/RTL/task3_top.vhd:56]
+INFO: [Synth 8-256] done synthesizing module 'code_converter_delay' (5#1) [D:/DDS/LAB2/task3/RTL/task3_top.vhd:11]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 470.387 ; gain = 151.984
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 470.387 ; gain = 151.984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 470.387 ; gain = 151.984
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/DDS/LAB2/task3/constr/constrain1.xdc]
+Finished Parsing XDC File [D:/DDS/LAB2/task3/constr/constrain1.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/DDS/LAB2/task3/constr/constrain1.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/code_converter_delay_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/code_converter_delay_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 742.004 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 742.004 ; gain = 423.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35ticpg236-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 742.004 ; gain = 423.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 742.004 ; gain = 423.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 742.004 ; gain = 423.602
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3917] design code_converter_delay has port led_o[4] driven by constant 0
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 742.004 ; gain = 423.602
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 776.789 ; gain = 458.387
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 776.789 ; gain = 458.387
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 776.789 ; gain = 458.387
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT2 |     2|
+|2     |LUT3 |     2|
+|3     |IBUF |     5|
+|4     |OBUF |     5|
++------+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |    14|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.914 ; gain = 459.512
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:24 . Memory (MB): peak = 777.941 ; gain = 187.922
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 777.941 ; gain = 459.539
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+32 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 796.605 ; gain = 491.250
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'D:/DDS/LAB2/task3/vivado/task3.runs/synth_1/code_converter_delay.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file code_converter_delay_utilization_synth.rpt -pb code_converter_delay_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 796.605 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 11 11:44:05 2026...

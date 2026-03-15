@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+library work;
+use work.delayed_components.all;
+
+entity DEL_OR2 is
+    generic (
+        delay : time := OR2_DELAY
+    );
+    port (
+        I0 : in std_logic;
+        I1 : in std_logic;
+        O : out std_logic
+    );
+end DEL_OR2;
+
+architecture rtl of DEL_OR2 is
+begin
+    O <= I1 or I0 after delay;
+end rtl;

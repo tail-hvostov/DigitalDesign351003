@@ -25,19 +25,25 @@ architecture structure of tsk4_top is
         );
     end component;
     
-    alias input_r : std_logic_vector(7 downto 0) is sw_in(7 downto 0);
+    signal input_r : std_logic_vector(7 downto 0);
     
     signal input : std_logic_vector(7 downto 0);
-    alias num1 : std_logic_vector(2 downto 0) is input(5 downto 3);
-    alias num2 : std_logic_vector(2 downto 0) is input(2 downto 0);
-    alias greater_in : std_logic is input(7);
-    alias smaller_in : std_logic is input(6);
+    signal num1 : std_logic_vector(2 downto 0);
+    signal num2 : std_logic_vector(2 downto 0);
+    signal greater_in : std_logic;
+    signal smaller_in : std_logic;
     
     signal greater_cache_r : std_logic_vector(2 downto 0);
     signal smaller_cache_r : std_logic_vector(2 downto 0);
     signal greater_cache : std_logic_vector(2 downto 0);
     signal smaller_cache : std_logic_vector(2 downto 0);
 begin
+    input_r <= sw_in(7 downto 0);
+    num1 <= input(5 downto 3);
+    num2 <= input(2 downto 0);
+    greater_in <= input(7);
+    smaller_in <= input(6);
+
     W1 : for I in input_r'low to input_r'high generate
         U : DEL_WIRE port map(I => input_r(I), O => input(I));
     end generate;

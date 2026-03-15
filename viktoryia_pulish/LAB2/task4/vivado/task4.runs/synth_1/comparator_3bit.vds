@@ -1,0 +1,326 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Mar 11 22:11:44 2026
+# Process ID: 22500
+# Current directory: D:/DDS/LAB2/task4/vivado/task4.runs/synth_1
+# Command line: vivado.exe -log comparator_3bit.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source comparator_3bit.tcl
+# Log file: D:/DDS/LAB2/task4/vivado/task4.runs/synth_1/comparator_3bit.vds
+# Journal file: D:/DDS/LAB2/task4/vivado/task4.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source comparator_3bit.tcl -notrace
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 305.984 ; gain = 73.672
+Command: synth_design -top comparator_3bit -part xc7a35ticpg236-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 15440 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 414.613 ; gain = 95.977
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'comparator_3bit' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:11]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'xnor2_delay' declared at 'D:/DDS/LAB2/task4/RTL/xnor2_delay.vhd:4' bound to instance 'U1' of component 'xnor2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'xnor2_delay' [D:/DDS/LAB2/task4/RTL/xnor2_delay.vhd:12]
+	Parameter DELAY bound to: 32'sb00000000000111101000010010000000 
+INFO: [Synth 8-256] done synthesizing module 'xnor2_delay' (1#1) [D:/DDS/LAB2/task4/RTL/xnor2_delay.vhd:12]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'xnor2_delay' declared at 'D:/DDS/LAB2/task4/RTL/xnor2_delay.vhd:4' bound to instance 'U1' of component 'xnor2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:43]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'xnor2_delay' declared at 'D:/DDS/LAB2/task4/RTL/xnor2_delay.vhd:4' bound to instance 'U1' of component 'xnor2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:43]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U2' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'and2_delay' [D:/DDS/LAB2/task4/RTL/and2_delay.vhd:12]
+	Parameter DELAY bound to: 32'sb00000000000111101000010010000000 
+INFO: [Synth 8-256] done synthesizing module 'and2_delay' (2#1) [D:/DDS/LAB2/task4/RTL/and2_delay.vhd:12]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U3' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:47]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'not_delay' [D:/DDS/LAB2/task4/RTL/not_delay.vhd:12]
+	Parameter DELAY bound to: 32'sb00000000000111101000010010000000 
+INFO: [Synth 8-256] done synthesizing module 'not_delay' (3#1) [D:/DDS/LAB2/task4/RTL/not_delay.vhd:12]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'not_delay' declared at 'D:/DDS/LAB2/task4/RTL/not_delay.vhd:4' bound to instance 'U4' of component 'not_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:51]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U5' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:56]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U5' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:56]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U5' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:56]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U6' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:61]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U6' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:61]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U6' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:61]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U7' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:65]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'or2_delay' declared at 'D:/DDS/LAB2/task4/RTL/or2_delay.vhd:4' bound to instance 'U8' of component 'or2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:66]
+INFO: [Synth 8-638] synthesizing module 'or2_delay' [D:/DDS/LAB2/task4/RTL/or2_delay.vhd:12]
+	Parameter DELAY bound to: 32'sb00000000000111101000010010000000 
+INFO: [Synth 8-256] done synthesizing module 'or2_delay' (4#1) [D:/DDS/LAB2/task4/RTL/or2_delay.vhd:12]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U9' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:67]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'or2_delay' declared at 'D:/DDS/LAB2/task4/RTL/or2_delay.vhd:4' bound to instance 'U10' of component 'or2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:68]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U11' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:71]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'or2_delay' declared at 'D:/DDS/LAB2/task4/RTL/or2_delay.vhd:4' bound to instance 'U12' of component 'or2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:72]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'and2_delay' declared at 'D:/DDS/LAB2/task4/RTL/and2_delay.vhd:4' bound to instance 'U13' of component 'and2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:73]
+	Parameter DELAY bound to: 32'b00000000000111101000010010000000 
+INFO: [Synth 8-3491] module 'or2_delay' declared at 'D:/DDS/LAB2/task4/RTL/or2_delay.vhd:4' bound to instance 'U14' of component 'or2_delay' [D:/DDS/LAB2/task4/RTL/task4_top.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'comparator_3bit' (5#1) [D:/DDS/LAB2/task4/RTL/task4_top.vhd:11]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 470.066 ; gain = 151.430
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 470.066 ; gain = 151.430
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 470.066 ; gain = 151.430
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/DDS/LAB2/task4/constr/constrain1.xdc]
+Finished Parsing XDC File [D:/DDS/LAB2/task4/constr/constrain1.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/DDS/LAB2/task4/constr/constrain1.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/comparator_3bit_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/comparator_3bit_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 772.664 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 772.664 ; gain = 454.027
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35ticpg236-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 772.664 ; gain = 454.027
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 772.664 ; gain = 454.027
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 772.664 ; gain = 454.027
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module xnor2_delay 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 772.664 ; gain = 454.027
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 784.863 ; gain = 466.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 784.863 ; gain = 466.227
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 784.863 ; gain = 466.227
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT6 |     3|
+|2     |IBUF |     6|
+|3     |OBUF |     3|
++------+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |    12|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 785.992 ; gain = 467.355
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:27 . Memory (MB): peak = 786.004 ; gain = 164.770
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 786.004 ; gain = 467.367
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+47 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 804.027 ; gain = 498.043
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'D:/DDS/LAB2/task4/vivado/task4.runs/synth_1/comparator_3bit.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file comparator_3bit_utilization_synth.rpt -pb comparator_3bit_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 804.391 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 11 22:12:39 2026...
