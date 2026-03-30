@@ -7,16 +7,33 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
 
 entity Task1Top is
---  Port ( );
+    port (
+        led_out : out std_logic_vector(15 downto 0);
+        sw_in : in std_logic_vector(15 downto 0)
+    );
 end Task1Top;
 
-architecture Behavioral of Task1Top is
-
+architecture Structural of Task1Top is
+    signal R : std_logic;
+    signal S : std_logic;
+    signal Q : std_logic;
+    signal nQ : std_logic;
 begin
+    R <= sw_in(1);
+    S <= sw_in(0);
 
+    U0 : LUT2
+        generic map(INIT => "0111")
+        port map(I0 => R, I1 => nQ, O => Q);
+    U1 : LUT2
+        generic map(INIT => "0111")
+        port map(I0 => Q, I1 => S, O => nQ);
 
-end Behavioral;
+    led_out(15 downto 2) <= (others => '0');
+    led_out(1) <= Q;
+    led_out(0) <= nQ;
+end Structural;
