@@ -5,7 +5,7 @@ library UNISIM;
 use UNISIM.VComponents.all;
 
 library work;
-use work.domestic_components.all;
+use work.delayed_components.all;
 
 entity tsk6_top is
     port (
@@ -35,18 +35,20 @@ begin
 
     led_out(15 downto 2) <= "00000000000000";
     
-    U1 : LUT1
-        generic map (INIT => "01")
-        port map (I0 => Q2, O => nQ);
+--    U1 : LUT1
+--        generic map (INIT => "01")
+--        port map (I0 => Q2, O => nQ);
+    U1 : DEL_INV port map (I => Q2, O => nQ);
     
-    U2 : LUT1
-        generic map (INIT => "01")
-        port map (I0 => nQ, O => Q);
+--    U2 : LUT1
+--        generic map (INIT => "01")
+--        port map (I0 => nQ, O => Q);
+    U2 : DEL_INV port map (I => nQ, O => Q);
     
-    U3 : DOM_AND2 port map (I0 => W, I1 => D, O => WD);
-    U4 : DOM_INV port map (I => W, O => nW);
-    U5 : DOM_AND2 port map (I0 => Q, I1 => nW, O => QnW);
-    U6 : DOM_OR2 port map (I0 => WD, I1 => QnW, O => Q2);
+    U3 : DEL_AND2 port map (I0 => W, I1 => D, O => WD);
+    U4 : DEL_INV port map (I => W, O => nW);
+    U5 : DEL_AND2 port map (I0 => Q, I1 => nW, O => QnW);
+    U6 : DEL_OR2 port map (I0 => WD, I1 => QnW, O => Q2);
         
     led_out(1) <= Q2;
     led_out(0) <= nQ;
