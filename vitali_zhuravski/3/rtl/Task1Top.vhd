@@ -22,16 +22,21 @@ architecture Structural of Task1Top is
     signal S : std_logic;
     signal Q : std_logic;
     signal nQ : std_logic;
+    signal Qf : std_logic;
+    signal nQf : std_logic;
 begin
     R <= sw_in(1);
     S <= sw_in(0);
+    
+    Qf <= transport Q after 5ns;
+    nQf <= transport nQ after 5ns;
 
     U0 : LUT2
         generic map(INIT => "0111")
-        port map(I0 => R, I1 => nQ, O => Q);
+        port map(I0 => R, I1 => nQf, O => Q);
     U1 : LUT2
         generic map(INIT => "0111")
-        port map(I0 => Q, I1 => S, O => nQ);
+        port map(I0 => Qf, I1 => S, O => nQ);
 
     led_out(15 downto 2) <= (others => '0');
     led_out(1) <= Q;

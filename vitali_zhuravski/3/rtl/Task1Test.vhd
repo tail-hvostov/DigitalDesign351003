@@ -86,6 +86,7 @@ begin
         end loop;
         
         report integer'image(successful_tests) & " tests of 5 succeded.";
+        sw_in(1 downto 0) <= "11";
         wait;
     end process;
 
