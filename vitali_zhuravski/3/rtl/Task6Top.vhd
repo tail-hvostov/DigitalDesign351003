@@ -68,7 +68,7 @@ architecture Behavioral of Task6Top is
     signal pwm_clk : std_logic;
 begin
     U0 : FreqDivBehav
-    generic map(K => 1500000)
+    generic map(K => 800)
     port map(CLK => clk, RST => '0', EN => '1', Q => pwm_clk);
 
     U1 : PwmController
