@@ -102,7 +102,6 @@ begin
             report "Test " & integer'image(test_count) & " (Reset): FAILED - Expected: 0, Got: " & integer'image(to_integer(unsigned(Dout)));
         end if;
         
-        -- ???? 2: ?????? ?????? xAB ? ???????
         test_count := test_count + 1;
         Din <= x"AB";
         EN <= '1';
@@ -117,7 +116,6 @@ begin
             report "Test " & integer'image(test_count) & " (Write xAB): FAILED - Expected: 171, Got: " & integer'image(to_integer(unsigned(Dout)));
         end if;
         
-        -- ???? 3: ????? ???????? (EN=0, ????????? Din ?? ?????? ?? ?????)
         test_count := test_count + 1;
         Din <= x"CD";
         wait for CLK_PERIOD;
@@ -129,7 +127,6 @@ begin
             report "Test " & integer'image(test_count) & " (Hold mode): FAILED - Expected: 171, Got: " & integer'image(to_integer(unsigned(Dout)));
         end if;
         
-        -- ???? 4: ?????? ?????? xCD ? ???????
         test_count := test_count + 1;
         EN <= '1';
         wait for CLK_PERIOD;
@@ -143,7 +140,6 @@ begin
             report "Test " & integer'image(test_count) & " (Write xCD): FAILED - Expected: 205, Got: " & integer'image(to_integer(unsigned(Dout)));
         end if;
         
-        -- ???? 5: ?????????? ????? ?? ????? ??????
         test_count := test_count + 1;
         RST <= '1';
         wait for CLK_PERIOD;
@@ -157,7 +153,6 @@ begin
             report "Test " & integer'image(test_count) & " (Synchronous reset): FAILED - Expected: 0, Got: " & integer'image(to_integer(unsigned(Dout)));
         end if;
         
-        -- ???? 6: ?????? ?????? xEF ????? ??????
         test_count := test_count + 1;
         Din <= x"EF";
         EN <= '1';

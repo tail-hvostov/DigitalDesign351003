@@ -91,14 +91,12 @@ begin
         variable test_count : integer := 0;
         variable pass_count : integer := 0;
     begin
-        -- ???? 1: ????? ???? ?????????
         test_count := test_count + 1;
         RST <= '1';
         wait for CLK_PERIOD;
         RST <= '0';
         wait for CLK_PERIOD;
         
-        -- ???????? ????????? 0 ? 3 ????? ??????
         RAddr <= std_logic_vector(to_unsigned(0, ADDR_WIDTH));
         wait for CLK_PERIOD;
         if unsigned(RD) = 0 then
@@ -108,7 +106,6 @@ begin
             report "Test 1: Reset - FAILED";
         end if;
         
-        -- ???? 2: ?????? ? ??????? 0 ? ??????
         test_count := test_count + 1;
         WE <= '1';
         WAddr <= std_logic_vector(to_unsigned(0, ADDR_WIDTH));
@@ -126,7 +123,6 @@ begin
             report "Test 2: Write to reg0 = 2748, Read = " & integer'image(to_integer(unsigned(RD))) & " - FAILED";
         end if;
         
-        -- ???? 3: ?????? ? ??????? 3 ? ??????
         test_count := test_count + 1;
         WE <= '1';
         WAddr <= std_logic_vector(to_unsigned(3, ADDR_WIDTH));
@@ -144,7 +140,6 @@ begin
             report "Test 3: Write to reg3 = 291, Read = " & integer'image(to_integer(unsigned(RD))) & " - FAILED";
         end if;
         
-        -- ???? 4: ????? ????? ??????
         test_count := test_count + 1;
         RST <= '1';
         wait for CLK_PERIOD;
