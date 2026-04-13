@@ -53,17 +53,34 @@ begin
         if rising_edge(CLK) then
             if RST = '1' then
                 counter <= 0;
-                output <= '0';
             elsif EN = '1' then
                 if counter = KH - 1 then
                     counter <= 0;
-                    output <= not output;
                 else
                     counter <= counter + 1;
                 end if;
             end if;
         end if;
     end process;
+    
+    output <= '1' when (counter = (KH - 1)) else '0';
+    
+--    P0 : process(CLK)
+--    begin
+--        if rising_edge(CLK) then
+--            if RST = '1' then
+--                counter <= 0;
+--                output <= '0';
+--            elsif EN = '1' then
+--                if counter = KH - 1 then
+--                    counter <= 0;
+--                    output <= not output;
+--                else
+--                    counter <= counter + 1;
+--                end if;
+--            end if;
+--        end if;
+--    end process;
     
     Q <= output;
 
