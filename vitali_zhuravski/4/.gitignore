@@ -1,0 +1,14 @@
+*.log
+*.jou
+*.backup.jou
+*.backup.log
+*.dmp
+*~
+vivadopid*
+*.str
+*.upgrade_log
+*.cache/
+*.runs/
+*.sim/
+*.hw/
+webtalk/
