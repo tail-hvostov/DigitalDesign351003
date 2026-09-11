@@ -45,7 +45,7 @@ end FreqDivBehav;
 
 architecture Behavioral of FreqDivBehav is
     constant KH : natural := K / 2;
-    signal counter : natural;
+    signal counter : natural range 0 to KH - 1;
     signal output : std_logic;
 begin
 --    P0 : process(CLK)
