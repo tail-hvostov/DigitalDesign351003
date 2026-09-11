@@ -51,6 +51,7 @@ entity Task2Machine is
 end Task2Machine;
 
 architecture Behavioral of Task2Machine is
+    constant BLINK_FREQ : natural := CLK_FREQ / 2;
     type states is (A_MAIN_G, A_MAIN_B, A_MAIN_Y, A_SEC_G, A_SEC_G2, A_SEC_Y, M_MAIN_G, M_MAIN_Y, M_SEC_G, M_SEC_Y);
     
     signal blink_clk : std_logic;
@@ -95,7 +96,7 @@ architecture Behavioral of Task2Machine is
 begin
     
     U0 : EvalDivider
-    generic map(EVAL => CLK_FREQ / 2)
+    generic map(EVAL => BLINK_FREQ)
     port map(CLK => CLK, CLR => time_clr, EN => time_en, Q => blink_clk);
     
     U1 : EvalDivider

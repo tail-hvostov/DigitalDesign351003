@@ -55,7 +55,11 @@ begin
             store <= 0;
         elsif rising_edge(CLK) then
             if EN = '1' then
-                store <= store + 1;
+                if store = MAX_VAL then
+                    store <= 0;
+                else
+                    store <= store + 1;
+                end if;
             end if;
         end if;
     end process;

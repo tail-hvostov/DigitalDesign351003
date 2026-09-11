@@ -74,7 +74,7 @@ architecture Behavioral of EvalDivider is
     end component;
 begin
 
-    U0 : if (HALF rem 2 = 0) generate
+    U0 : if (HALF mod 2 = 0) generate
         U01 : EvalDivider
         generic map(EVAL => HALF)
         port map(CLK => CLK, CLR => CLR, EN => EN, Q => head_q);
@@ -84,7 +84,7 @@ begin
         head_q <= CLK;
     end generate;
     
-    U2 : if ((HALF /= 1) and (HALF rem 2 = 1)) generate
+    U2 : if ((HALF /= 1) and (HALF mod 2 = 1)) generate
         U21 : OddDivider
         generic map(ODD => HALF)
         port map(CLK => CLK, CLR => CLR, EN => EN, Q => head_q);
