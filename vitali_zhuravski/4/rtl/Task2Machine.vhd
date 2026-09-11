@@ -225,12 +225,14 @@ begin
     
     process(CLK)
     begin
-        if (button_state = '0') and (MANUAL_NEXT = '1') then
-            button_pressed <= '1';
-        else
-            button_pressed <= '0';
+        if rising_edge(CLK) then
+            if (button_state = '0') and (MANUAL_NEXT = '1') then
+                button_pressed <= '1';
+            else
+                button_pressed <= '0';
+            end if;
+            button_state <= MANUAL_NEXT;
         end if;
-        button_state <= MANUAL_NEXT;
     end process;
     
     process(CLK)
@@ -249,22 +251,22 @@ begin
                     when A_MAIN_G =>
                         if MODE = '1' then
                             cur_state <= M_MAIN_G;
-                        elsif (CAR_SENSOR = '1') or rising_edge(period_clk) then
+                        elsif (CAR_SENSOR = '1') or (period_clk = '1') then
                             time_clr <= '1';
                             cur_state <= A_MAIN_B;
                         end if;
                     when A_MAIN_B =>
-                        if rising_edge(period_clk) then
+                        if period_clk = '1' then
                             time_clr <= '1';
                             cur_state <= A_MAIN_Y;
                         end if;
                     when A_MAIN_Y =>
-                        if rising_edge(period_clk) then
+                        if period_clk = '1' then
                             time_clr <= '1';
                             cur_state <= A_SEC_G;
                         end if;
                     when A_SEC_G =>
-                        if rising_edge(period_clk) then
+                        if period_clk = '1' then
                             time_clr <= '1';
                             if CAR_SENSOR = '1' then
                                 cur_state <= A_SEC_G2;
@@ -273,12 +275,12 @@ begin
                             end if;
                         end if;
                     when A_SEC_G2 =>
-                        if rising_edge(period_clk) then
+                        if period_clk = '1' then
                             time_clr <= '1';
                             cur_state <= A_SEC_Y;
                         end if;
                     when A_SEC_Y =>
-                        if rising_edge(period_clk) then
+                        if period_clk = '1' then
                             time_clr <= '1';
                             cur_state <= A_MAIN_G;
                         end if;

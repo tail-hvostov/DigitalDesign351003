@@ -44,7 +44,7 @@ architecture Behavioral of Task2Test is
     signal CAR_SENSOR : std_logic;
     signal MANUAL_NEXT : std_logic;
     
-    type out_val_array is array(0 to 6) of std_logic_vector(5 downto 0);
+    type out_val_array is array(0 to 7) of std_logic_vector(5 downto 0);
     constant out_vals : out_val_array := (
         0 => "001100",
         1 => "000100",
@@ -52,7 +52,8 @@ architecture Behavioral of Task2Test is
         3 => "000100",
         4 => "001100",
         5 => "001100",
-        6 => "000100"
+        6 => "000100",
+        7 => "000100"
     );
 
     component Task2Machine is
@@ -155,6 +156,13 @@ begin
         end if;
         test_counter := test_counter + 1;
         
+        wait for 9490 ms;
+        if outputs = out_vals(test_counter) then
+            succeeded_tests := succeeded_tests + 1;
+        else
+            report "Timered shift between A_MAIN_G and A_MAIN_B does not work.";
+        end if;
+        test_counter := test_counter + 1;
         
         report natural'image(succeeded_tests) & " tests of " & natural'image(test_counter) & " succeeded.";
         wait;

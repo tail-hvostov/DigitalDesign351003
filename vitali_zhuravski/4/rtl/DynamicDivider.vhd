@@ -49,7 +49,7 @@ architecture Behavioral of DynamicDivider is
     signal store : std_logic_vector(LIMIT'range);
     signal next_store : std_logic_vector(LIMIT'range);
 begin
-    cur_max <= std_logic_vector(unsigned(LIMIT) - 1);
+    cur_max <= std_logic_vector(unsigned(LIMIT));
     Q <= '1' when (cur_max = store) else '0';
     next_store <= std_logic_vector(1 + unsigned(store));
     
