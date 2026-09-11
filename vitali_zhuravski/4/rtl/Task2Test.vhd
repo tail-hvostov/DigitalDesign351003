@@ -44,10 +44,11 @@ architecture Behavioral of Task2Test is
     signal CAR_SENSOR : std_logic;
     signal MANUAL_NEXT : std_logic;
     
-    type out_val_array is array(0 to 1) of std_logic_vector(5 downto 0);
+    type out_val_array is array(0 to 2) of std_logic_vector(5 downto 0);
     constant out_vals : out_val_array := (
         0 => "001100",
-        1 => "000100"
+        1 => "000100",
+        2 => "001100"
     );
 
     component Task2Machine is
@@ -72,11 +73,12 @@ architecture Behavioral of Task2Test is
 begin
     
     U0 : Task2Machine
+    generic map(CLK_FREQ => 100)
     port map(CLK => CLK, RST => RST, MODE => MODE, CAR_SENSOR => CAR_SENSOR, MANUAL_NEXT => MANUAL_NEXT,
                 MAIN_RED => outputs(5), MAIN_YELLOW => outputs(4), MAIN_GREEN => outputs(3),
                 SEC_RED => outputs(2), SEC_YELLOW => outputs(1), SEC_GREEN => outputs(0));
     
-    CLK <= transport not CLK after 5 ns;
+    CLK <= transport not CLK after 5 ms;
     
     process
         variable test_counter : natural;
@@ -90,9 +92,9 @@ begin
         MODE <= '0';
         CAR_SENSOR <= '0';
         MANUAL_NEXT <= '0';
-        wait for 10 ns;
+        wait for 10 ms;
         RST <= '1';
-        wait for 10 ns;
+        wait for 10 ms;
         RST <= '0';
         
         if outputs = out_vals(test_counter) then
@@ -103,7 +105,7 @@ begin
         test_counter := test_counter + 1;
         
         CAR_SENSOR <= '1';
-        wait for 10 ns;
+        wait for 10 ms;
         
         if outputs = out_vals(test_counter) then
             succeeded_tests := succeeded_tests + 1;
@@ -111,6 +113,16 @@ begin
             report "Green must blink during A_MAIN_B.";
         end if;
         test_counter := test_counter + 1;
+        
+        CAR_SENSOR <= '0';
+        wait for 500 ms;
+        if outputs = out_vals(test_counter) then
+            succeeded_tests := succeeded_tests + 1;
+        else
+            report "Green must blink during A_MAIN_B #2.";
+        end if;
+        test_counter := test_counter + 1;
+        
         
         report natural'image(succeeded_tests) & " tests of " & natural'image(test_counter) & " succeeded.";
         wait;
