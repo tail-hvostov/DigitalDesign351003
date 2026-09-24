@@ -51,266 +51,172 @@ entity Task2Machine is
 end Task2Machine;
 
 architecture Behavioral of Task2Machine is
-    constant BLINK_FREQ : natural := CLK_FREQ / 2;
-    type states is (A_MAIN_G, A_MAIN_B, A_MAIN_Y, A_SEC_G, A_SEC_G2, A_SEC_Y, M_MAIN_G, M_MAIN_Y, M_SEC_G, M_SEC_Y);
+    type machine_states is (A_MAIN_G, A_MAIN_GB, A_MAIN_Y, A_SEC_G, A_SEC_G2, A_SEC_Y,
+                            M_MAIN_G, M_MAIN_Y, M_SEC_G, M_SEC_Y);
+    constant STATE_COUNT : positive := machine_states'pos(machine_states'high) + 1;
+    type output_template_array is array(1 to STATE_COUNT) of std_logic_vector(1 to 7);
     
-    signal blink_clk : std_logic;
-    signal sec_clk : std_logic;
-    signal time_en : std_logic;
-    signal sec_limit : std_logic_vector(3 downto 0);
-    signal period_clk : std_logic;
-    signal time_clr : std_logic;
+    -- MR, MY, MG, MGB, SR, SY, SG
+    constant OUTPUT_TEMPLATES : output_template_array := (
+        1  => "0010100",
+        2  => "0001100",
+        3  => "0100100",
+        4  => "1000001",
+        5  => "1000001",
+        6  => "1000010",
+        
+        7  => "0010100",
+        8  => "0100100",
+        9  => "1000001",
+        10 => "1000010"
+    );
     
-    signal cur_state : states;
+    signal state : machine_states;
+    signal next_state : machine_states;
+    signal output_template_i : natural range 1 to STATE_COUNT;
+    signal output_template : std_logic_vector(1 to 7);
     
-    signal main_green_blink : std_logic;
-    signal main_green_en : std_logic;
-    
-    signal button_pressed : std_logic;
-    signal button_state : std_logic;
-    
-    component EvalDivider is
-        generic(
-            EVAL : natural
-        );
-        port(
-            CLK : in  std_logic;
-            CLR : in  std_logic;
-            EN  : in  std_logic;
-            Q   : out std_logic
-        );
-    end component;
-    
-    component DynamicDivider is
-        generic(
-            N : natural range 2 to 20
-        );
-        port(
-            LIMIT : in  std_logic_vector(N - 1 downto 0);
-            CLK   : in  std_logic;
-            EN    : in  std_logic;
-            CLR   : in  std_logic;
-            Q     : out std_logic
-        );
-    end component;
+    signal sec_counter : natural range 0 to 10;
+    signal clk_counter : natural range 0 to CLK_FREQ - 1;
+    signal blink_out : std_logic;
+    signal sec_out : std_logic;
+    signal manual_out : std_logic;
+    signal prev_manual_out : std_logic;
 begin
-    
-    U0 : EvalDivider
-    generic map(EVAL => BLINK_FREQ)
-    port map(CLK => CLK, CLR => time_clr, EN => time_en, Q => blink_clk);
-    
-    U1 : EvalDivider
-    generic map(EVAL => 2)
-    port map(CLK => blink_clk, CLR => time_clr, EN => time_en, Q => sec_clk);
-    
-    U2 : DynamicDivider
-    generic map(N => sec_limit'length)
-    port map(CLK => sec_clk, CLR => time_clr, EN => time_en, LIMIT => sec_limit, Q => period_clk);
-    
-    process(cur_state)
-    begin
-        case cur_state is
-            when A_MAIN_G =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '1';
-                SEC_RED <= '1';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '1';
-                sec_limit <= X"A";
-            when A_MAIN_B =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '1';
-                main_green_en <= '1';
-                SEC_RED <= '1';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '1';
-                sec_limit <= X"3";
-            when A_MAIN_Y =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '1';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '1';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '1';
-                sec_limit <= X"2";
-            when A_SEC_G =>
-                MAIN_RED <= '1';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '1';
-                time_en <= '1';
-                sec_limit <= X"3";
-            when A_SEC_G2 =>
-                MAIN_RED <= '1';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '1';
-                time_en <= '1';
-                sec_limit <= X"3";
-            when A_SEC_Y =>
-                MAIN_RED <= '1';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '1';
-                SEC_GREEN <= '0';
-                time_en <= '1';
-                sec_limit <= X"2";
-            when M_MAIN_G =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '1';
-                SEC_RED <= '1';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '0';
-                sec_limit <= X"0";
-            when M_MAIN_Y =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '1';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '1';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '0';
-                sec_limit <= X"0";
-            when M_SEC_G =>
-                MAIN_RED <= '1';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '1';
-                time_en <= '0';
-                sec_limit <= X"0";
-            when M_SEC_Y =>
-                MAIN_RED <= '1';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '1';
-                SEC_GREEN <= '0';
-                time_en <= '0';
-                sec_limit <= X"0";
-            when others =>
-                MAIN_RED <= '0';
-                MAIN_YELLOW <= '0';
-                main_green_blink <= '0';
-                main_green_en <= '0';
-                SEC_RED <= '0';
-                SEC_YELLOW <= '0';
-                SEC_GREEN <= '0';
-                time_en <= '0';
-                sec_limit <= X"0";
-        end case;
-    end process;
-    
+
     process(CLK)
     begin
         if rising_edge(CLK) then
-            if (button_state = '0') and (MANUAL_NEXT = '1') then
-                button_pressed <= '1';
-            else
-                button_pressed <= '0';
-            end if;
-            button_state <= MANUAL_NEXT;
-        end if;
-    end process;
-    
-    process(CLK)
-    begin
-        if rising_edge(CLK) then
-            time_clr <= '0';
-            if RST = '1' then
-                if MODE = '1' then
-                    cur_state <= M_MAIN_G;
+            if MANUAL_NEXT = '1' then
+                if prev_manual_out = '0' then
+                    manual_out <= '1';
+                    prev_manual_out <= '1';
                 else
-                    time_clr <= '1';
-                    cur_state <= A_MAIN_G;
+                    manual_out <= '0';
                 end if;
             else
-                case cur_state is
-                    when A_MAIN_G =>
-                        if MODE = '1' then
-                            cur_state <= M_MAIN_G;
-                        elsif (CAR_SENSOR = '1') or (period_clk = '1') then
-                            time_clr <= '1';
-                            cur_state <= A_MAIN_B;
-                        end if;
-                    when A_MAIN_B =>
-                        if period_clk = '1' then
-                            time_clr <= '1';
-                            cur_state <= A_MAIN_Y;
-                        end if;
-                    when A_MAIN_Y =>
-                        if period_clk = '1' then
-                            time_clr <= '1';
-                            cur_state <= A_SEC_G;
-                        end if;
-                    when A_SEC_G =>
-                        if period_clk = '1' then
-                            time_clr <= '1';
-                            if CAR_SENSOR = '1' then
-                                cur_state <= A_SEC_G2;
-                            else
-                                cur_state <= A_SEC_Y;
-                            end if;
-                        end if;
-                    when A_SEC_G2 =>
-                        if period_clk = '1' then
-                            time_clr <= '1';
-                            cur_state <= A_SEC_Y;
-                        end if;
-                    when A_SEC_Y =>
-                        if period_clk = '1' then
-                            time_clr <= '1';
-                            cur_state <= A_MAIN_G;
-                        end if;
-                    when M_MAIN_G =>
-                        if MODE = '0' then
-                            time_clr <= '1';
-                            cur_state <= A_MAIN_G;
-                        elsif button_pressed = '1' then
-                            cur_state <= M_MAIN_Y;
-                        end if;
-                    when M_MAIN_Y =>
-                        if button_pressed = '1' then
-                            cur_state <= M_SEC_G;
-                        end if;
-                    when M_SEC_G =>
-                        if button_pressed = '1' then
-                            cur_state <= M_SEC_Y;
-                        end if;
-                    when M_SEC_Y =>
-                        if button_pressed = '1' then
-                            cur_state <= M_MAIN_G;
-                        end if;
-                    when others =>
-                        time_clr <= '1';
-                        cur_state <= A_MAIN_G;
-                end case;
+                manual_out <= '0';
+                prev_manual_out <= '0';
             end if;
         end if;
     end process;
-    
-    MAIN_GREEN <= '0' when main_green_en = '0' else blink_clk when main_green_blink = '1' else '1';
 
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            if RST = '1' then
+                clk_counter <= 0;
+            elsif clk_counter = CLK_FREQ - 1 then
+                clk_counter <= 0;
+            else
+                clk_counter <= 1 + clk_counter;
+            end if;
+        end if;
+    end process;
+    blink_out <= '0' when (clk_counter < CLK_FREQ / 4) or
+                          (clk_counter >= CLK_FREQ / 2 and clk_counter < 3 * CLK_FREQ / 4) else '1';
+    sec_out <= '1' when clk_counter = (CLK_FREQ - 1) else '0';
+    
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            if next_state /= state then
+                sec_counter <= 0;
+            elsif sec_out = '1' then
+                sec_counter <= 1 + sec_counter;
+            end if;
+        end if;
+    end process;
+   
+    process(state, RST, MODE, sec_counter, CAR_SENSOR, manual_out)
+    begin
+        next_state <= state;
+        if RST = '1' then
+            if MODE= '0' then
+                next_state <= A_MAIN_G;
+            else
+                next_state <= M_MAIN_G;
+            end if;
+        else
+            case state is
+                when A_MAIN_G =>
+                    if MODE = '1' then
+                        next_state <= M_MAIN_G;
+                    elsif (sec_counter = 10) or (CAR_SENSOR = '1') then
+                        next_state <= A_MAIN_GB;
+                    end if;
+                when A_MAIN_GB =>
+                    if sec_counter = 3 then
+                        next_state <= A_MAIN_Y;
+                    end if;
+                when A_MAIN_Y =>
+                    if sec_counter = 2 then
+                        next_state <= A_SEC_G;
+                    end if;
+                when A_SEC_G =>
+                    if sec_counter = 3 then
+                        if CAR_SENSOR = '0' then
+                            next_state <= A_SEC_Y;
+                        else
+                            next_state <= A_SEC_G2;
+                        end if;
+                    end if;
+                when A_SEC_G2 =>
+                    if sec_counter = 3 then
+                        next_state <= A_SEC_Y;
+                    end if;
+                when A_SEC_Y =>
+                    if sec_counter = 2 then
+                        next_state <= A_MAIN_G;
+                    end if;
+                when M_MAIN_G =>
+                    if MODE = '0' then
+                        next_state <= A_MAIN_G;
+                    elsif manual_out = '1' then
+                        next_state <= M_MAIN_Y;
+                    end if;
+                when M_MAIN_Y =>
+                    if manual_out = '1' then
+                        next_state <= M_SEC_G;
+                    end if;
+                when M_SEC_G =>
+                    if manual_out = '1' then
+                        next_state <= M_SEC_Y;
+                    end if;
+                when M_SEC_Y =>
+                    if manual_out = '1' then
+                        next_state <= M_MAIN_G;
+                    end if;
+            end case;
+        end if;
+    end process;
+    
+    process(CLK)
+    begin
+        if rising_edge(CLK) then
+            state <= next_state;
+        end if;
+    end process;
+    
+    with state select output_template_i <=
+        1  when A_MAIN_G,
+        2  when A_MAIN_GB,
+        3  when A_MAIN_Y,
+        4  when A_SEC_G,
+        5  when A_SEC_G2,
+        6  when A_SEC_Y,
+        
+        7  when M_MAIN_G,
+        8  when M_MAIN_Y,
+        9  when M_SEC_G,
+        10 when M_SEC_Y,
+        
+        1  when others;
+    output_template <= OUTPUT_TEMPLATES(output_template_i);
+    MAIN_RED <= output_template(1);
+    MAIN_YELLOW <= output_template(2);
+    MAIN_GREEN <= blink_out when output_template(4) = '1' else output_template(3);
+    SEC_RED <= output_template(5);
+    SEC_YELLOW <= output_template(6);
+    SEC_GREEN <= output_template(7);
 end Behavioral;
