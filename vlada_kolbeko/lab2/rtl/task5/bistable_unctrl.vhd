@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity BISTABLE_U is
     port (
         nQ   : out   std_logic;
-        Q  : out   std_logic
+        Q  : out     std_logic
     );
 end BISTABLE_U;
 

@@ -88,82 +88,27 @@ architecture Structural of COMP1_D is
         );
     end component;
 begin
-    INTCON_0: INTCON_D port map (
-        X => A,
-        Y => sA0
-    );
+    sA0 <= transport A after 10 ns;
+    sB0 <= transport B after 11 ns;
     
-    INTCON_1: INTCON_D
-    generic map (
-        DELAY => 11 ns
-    )
-    port map (
-        X => B,
-        Y => sB0
-    );
+    sA1 <= transport A after 15 ns;
+    sB1 <= transport B after 16 ns;
     
-    INTCON_2: INTCON_D
-    generic map (
-        DELAY => 15 ns
-    )
-    port map (
-        X => A,
-        Y => sA1
-    );
+    spE0 <= transport pE after 15 ns;  
+      
+    spG0 <= transport pG after 10 ns;
+    spG1 <= transport pG after 15 ns;
     
-    INTCON_3: INTCON_D
-    generic map (
-        DELAY => 16 ns
-    )
-    port map (
-        X => B,
-        Y => sB1
-    );
-    
-    INTCON_4: INTCON_D
-    generic map (
-        DELAY => 15 ns
-    )
-    port map (
-        X => pE,
-        Y => spE0
-    );
-    
-    INTCON_5: INTCON_D port map (
-        X => pG,
-        Y => spG0
-    );
-    
-    INTCON_6: INTCON_D 
-    generic map (
-        DELAY => 15 ns
-    )    
-    port map (
-        X => pG,
-        Y => spG1
-    );
-    
-    INTCON_7: INTCON_D port map (
-        X => pL,
-        Y => spL0
-    );
+    spL0 <= transport pL after 10 ns;
+    spL1 <= transport pL after 15 ns;
         
-    INTCON_8: INTCON_D 
-    generic map (
-        DELAY => 15 ns
-    )    
-    port map (
-        X => pL,
-        Y => spL1
-    );
-    
     XOR2_0: XOR2_D port map (
         X1 => sA0,
         X2 => sB0,
         Y => snCE
     );
     
-    INTCON_9: INTCON_D
+    INTCON_0: INTCON_D
     generic map (
         DELAY => 5 ns
     )
@@ -172,12 +117,12 @@ begin
         Y => snCE0
     );
     
-    INTCON_10: INTCON_D port map (
+    INTCON_1: INTCON_D port map (
         X => snCE,
         Y => snCE1
     );
     
-    INTCON_11: INTCON_D port map (
+    INTCON_2: INTCON_D port map (
         X => snCE,
         Y => snCE2
     );
@@ -187,12 +132,12 @@ begin
         Y => sCE
     );
     
-    INTCON_12: INTCON_D port map (
+    INTCON_3: INTCON_D port map (
         X => sCE,
         Y => sCE0
     );
     
-    INTCON_13: INTCON_D 
+    INTCON_4: INTCON_D 
     generic map (
         DELAY => 15 ns
     )    
@@ -201,7 +146,7 @@ begin
         Y => sCE1
     );
    
-    INTCON_14: INTCON_D 
+    INTCON_5: INTCON_D 
     generic map (
         DELAY => 20 ns
     )    
@@ -210,7 +155,7 @@ begin
         Y => sCE2
     );
         
-    INTCON_15: INTCON_D 
+    INTCON_6: INTCON_D 
     generic map (
         DELAY => 30 ns
     )    
@@ -225,115 +170,107 @@ begin
         Y => sNOR_00
     );
     
-    INTCON_16: INTCON_D
+    INTCON_7: INTCON_D
     generic map (
-        DELAY => 20 ns
-    )
-    port map (
-        X => sNOR_00,
-        Y => sNOR_01
-    );
-    
-    AND2_0: AND2_D port map (
-        X1 => spE0,
-        X2 => sCE0,
-        Y => sAND_00
-    );
-    
-    INTCON_17: INTCON_D
-    generic map (
-        DELAY => 15 ns
-    )
-    port map (
-        X => sAND_00,
-        Y => sAND_01
-    );
-    
-    OR2_0: OR2_D port map (
-        X1 => sAND_01,
-        X2 => sNOR_01,
-        Y => sOR_00
-    );
-    
-    INTCON_18: INTCON_D port map (
-        X => sOR_00,
-        Y => sOR_01
-    );
-    
-    AND2_1: AND2_D port map (
-        X1 => sOR_01,
-        X2 => sCE3,
-        Y => sE
-    );
-    
-    INTCON_19: INTCON_D port map (
-        X => sE,
-        Y => E
-    );
-    
-    AND2_2: AND2_D port map (
-        X1 => sA1,
-        X2 => snCE1,
-        Y => sAND_20
-    );
-    
-    INTCON_20: INTCON_D port map (
-        X => sAND_20,
-        Y => sAND_21
-    );
-    
-    AND2_3: AND2_D port map (
-        X1 => sCE1,
-        X2 => spG1,
-        Y => sAND_30
-    );
-    
-    INTCON_21: INTCON_D port map (
-        X => sAND_30,
-        Y => sAND_31
-    );
-    
-    OR2_1: OR2_D port map (
-        X1 => sAND_21,
-        X2 => sAND_31,
-        Y => sG
-    );
-    
-    INTCON_22: INTCON_D port map (
-        X => sG,
-        Y => G
-    );
+
+            DELAY => 20 ns
+        )
+        port map (
+            X => sNOR_00,
+            Y => sNOR_01
+        );
         
-    AND2_4: AND2_D port map (
-        X1 => sB1,
-        X2 => snCE2,
-        Y => sAND_40
-    );
+        AND2_0: AND2_D port map (
+            X1 => spE0,
+            X2 => sCE0,
+            Y => sAND_00
+        );
         
-    INTCON_23: INTCON_D port map (
-        X => sAND_40,
-        Y => sAND_41
-    );
-    
-    AND2_5: AND2_D port map (
-        X1 => sCE2,
-        X2 => spL1,
-        Y => sAND_50
-    );
+        INTCON_8: INTCON_D
+        generic map (
+            DELAY => 15 ns
+        )
+        port map (
+            X => sAND_00,
+            Y => sAND_01
+        );
         
-    INTCON_24: INTCON_D port map (
-        X => sAND_50,
-        Y => sAND_51
-    );
+        OR2_0: OR2_D port map (
+            X1 => sAND_01,
+            X2 => sNOR_01,
+            Y => sOR_00
+        );
         
-    OR2_2: OR2_D port map (
-        X1 => sAND_41,
-        X2 => sAND_51,
-        Y => sL
-    );
-    
-    INTCON_25: INTCON_D port map (
-        X => sL,
-        Y => L
-    );
-end Structural;   
+        INTCON_9: INTCON_D port map (
+            X => sOR_00,
+            Y => sOR_01
+        );
+        
+        AND2_1: AND2_D port map (
+            X1 => sOR_01,
+            X2 => sCE3,
+            Y => sE
+        );
+        
+        E <= transport sE after 10 ns;
+        
+        AND2_2: AND2_D port map (
+            X1 => sA1,
+            X2 => snCE1,
+            Y => sAND_20
+        );
+        
+        INTCON_10: INTCON_D port map (
+            X => sAND_20,
+            Y => sAND_21
+        );
+        
+        AND2_3: AND2_D port map (
+            X1 => sCE1,
+            X2 => spG1,
+            Y => sAND_30
+        );
+        
+        INTCON_11: INTCON_D port map (
+            X => sAND_30,
+            Y => sAND_31
+        );
+        
+        OR2_1: OR2_D port map (
+            X1 => sAND_21,
+            X2 => sAND_31,
+            Y => sG
+        );
+        
+        G <= transport sG after 10 ns;
+            
+        AND2_4: AND2_D port map (
+            X1 => sB1,
+            X2 => snCE2,
+            Y => sAND_40
+        );
+            
+        INTCON_12: INTCON_D port map (
+            X => sAND_40,
+            Y => sAND_41
+        );
+        
+        AND2_5: AND2_D port map (
+            X1 => sCE2,
+            X2 => spL1,
+            Y => sAND_50
+        );
+            
+        INTCON_13: INTCON_D port map (
+            X => sAND_50,
+            Y => sAND_51
+        );
+            
+        OR2_2: OR2_D port map (
+            X1 => sAND_41,
+            X2 => sAND_51,
+            Y => sL
+        );
+        
+        L <= transport sL after 10 ns;
+    end Structural;

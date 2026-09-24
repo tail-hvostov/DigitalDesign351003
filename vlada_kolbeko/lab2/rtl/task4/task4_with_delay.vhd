@@ -9,11 +9,11 @@ entity COMP3_D is
 end entity COMP3_D;
 
 architecture Structural of COMP3_D is
-    signal sA0, sA1, sA2                            : std_logic;
-    signal sB0, sB1, sB2                            : std_logic;
-    signal pE_00, pE_01, pE_10, pE_11, pE_20, pE_21 : std_logic;
-    signal pG_00, pG_01, pG_10, pG_11, pG_20, pG_21 : std_logic;
-    signal pL_00, pL_01, pL_10, pL_11, pL_20, pL_21 : std_logic;
+    signal sA0, sA1, sA2                    : std_logic;
+    signal sB0, sB1, sB2                    : std_logic;
+    signal pE_00, pE_01, pE_10, pE_11, pE_2 : std_logic;
+    signal pG_00, pG_01, pG_10, pG_11, pG_2 : std_logic;
+    signal pL_00, pL_01, pL_10, pL_11, pL_2 : std_logic;
     
     component COMP1_D is
         port (
@@ -33,57 +33,16 @@ architecture Structural of COMP3_D is
         );
      end component;
 begin
-    led_o(15 downto 4) <= (others => '0');
+    led_o(15 downto 3) <= (others => '0');
+   
+    sA0 <= transport sw_i(0) after 10 ns;
+    sB0 <= transport sw_i(3) after 11 ns;
     
-    INTCON_0: INTCON_D port map (
-        X => sw_i(0),
-        Y => sA0
-    );
+    sA1 <= transport sw_i(1) after 15 ns;
+    sB1 <= transport sw_i(4) after 16 ns;
     
-    INTCON_1: INTCON_D
-    generic map (
-        DELAY => 11 ns
-    )
-    port map (
-        X => sw_i(3),
-        Y => sB0
-    );
-    
-    INTCON_2: INTCON_D
-    generic map (
-        DELAY => 15 ns
-    )
-    port map (
-        X => sw_i(1),
-        Y => sA1   
-    );
-    
-    INTCON_3: INTCON_D
-    generic map (
-        DELAY => 16 ns
-    )
-    port map (
-        X => sw_i(4),
-        Y => sB1
-    );
-    
-    INTCON_4: INTCON_D
-    generic map (
-        DELAY => 20 ns
-    )
-    port map (
-        X => sw_i(2),
-        Y => sA2
-    );
-    
-    INTCON_5: INTCON_D
-    generic map (
-        DELAY => 21 ns
-    )
-    port map (
-        X => sw_i(5),
-        Y => sB2
-    );
+    sA2 <= transport sw_i(2) after 20 ns;
+    sB2 <= transport sw_i(5) after 21 ns;
     
     COMP1_0: COMP1_D port map (
         A => sA0,
@@ -96,17 +55,17 @@ begin
         L => pL_00
     );
     
-    INTCON_6: INTCON_D port map (
+    INTCON_0: INTCON_D port map (
         X => pE_00,
         Y => pE_01
     );
     
-    INTCON_7: INTCON_D port map (
+    INTCON_1: INTCON_D port map (
         X => pG_00,
         Y => pG_01
     );
     
-    INTCON_8: INTCON_D port map (
+    INTCON_2: INTCON_D port map (
         X => pL_00,
         Y => pL_01
     );
@@ -122,17 +81,17 @@ begin
         L => pL_10
     );
     
-    INTCON_9: INTCON_D port map (
+    INTCON_3: INTCON_D port map (
         X => pE_10,
         Y => pE_11
     );
         
-    INTCON_10: INTCON_D port map (
+    INTCON_4: INTCON_D port map (
         X => pG_10,
         Y => pG_11
     );
         
-    INTCON_11: INTCON_D port map (
+    INTCON_5: INTCON_D port map (
         X => pL_10,
         Y => pL_11
     );
@@ -143,35 +102,12 @@ begin
         pE => pE_11,
         pG => pG_11,
         pL => pL_11,
-        E => pE_20,
-        G => pG_20,
-        L => pL_20
+        E => pE_2,
+        G => pG_2,
+        L => pL_2
     );
   
-    INTCON_12: INTCON_D 
-    generic map (
-        DELAY => 7 ns
-    )
-    port map (
-        X => pE_20,
-        Y => led_o(2)
-    );
-            
-    INTCON_13: INTCON_D 
-    generic map (
-        DELAY => 7 ns
-    )
-    port map (
-        X => pG_20,
-        Y => led_o(1)
-    );
-            
-    INTCON_14: INTCON_D 
-    generic map (
-        DELAY => 7 ns
-    )
-    port map (
-        X => pL_20,
-        Y => led_o(0)
-    );
+    led_o(2) <= transport pE_2 after 7 ns;
+    led_o(1) <= transport pG_2 after 7 ns;
+    led_o(0) <= transport pL_2 after 7 ns;
 end Structural;

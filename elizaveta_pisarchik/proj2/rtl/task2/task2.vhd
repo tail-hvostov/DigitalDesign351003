@@ -15,7 +15,6 @@ architecture sim of TASK2 is
 
   signal sw_i  : std_logic_vector(3 downto 0) := (others => '0');
   signal led_o : std_logic_vector(1 downto 0);
-
 begin
   DUT : TASK1 port map(
     sw_i  => sw_i,

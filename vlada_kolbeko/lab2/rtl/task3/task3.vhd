@@ -12,7 +12,7 @@ architecture Structural of MIN_CODE_CONV_D is
     signal sX3_0, sX3_1, sX3_2                      :   std_logic;
     signal sX4_0, sX4_1, sX4_2                      :   std_logic;
     signal snX3_0, snX3_1, snX4_0, snX4_1           :   std_logic;
-    signal sY1_0, sY1_1, sY2_0, sY2_1, sY3_0, sY3_1 :   std_logic;
+    signal sY1, sY2, sY3                            :   std_logic;
     
     component INV_D is
         generic (
@@ -48,60 +48,14 @@ architecture Structural of MIN_CODE_CONV_D is
 begin
     led_o(15 downto 3) <= (others => '0');
     
-    INTCON_sX3_0: INTCON_D
-    generic map (
-        DELAY => 12 ns
-    )
-    port map (
-        X => sw_i(2),
-        Y => sX3_0
-    );
+    sX3_0 <= transport sw_i(2) after 12 ns;
+    sX3_1 <= transport sw_i(2) after 15 ns;
+    sX3_2 <= transport sw_i(2) after 20 ns;
     
-    INTCON_sX3_1: INTCON_D
-    generic map (
-        DELAY => 15 ns
-    )
-    port map (
-        X => sw_i(2),
-        Y => sX3_1
-    );
-    
-    INTCON_sX3_2: INTCON_D
-    generic map (
-        DELAY => 20 ns
-    )
-    port map (
-        X => sw_i(2),
-        Y => sX3_2
-    );
-     
-    INTCON_sX4_0: INTCON_D
-    generic map (
-        DELAY => 13 ns
-    )
-    port map (
-        X => sw_i(3),
-        Y => sX4_0
-    );
-            
-    INTCON_sX4_1: INTCON_D
-    generic map (
-        DELAY => 16 ns
-    )
-    port map (
-        X => sw_i(3),
-        Y => sX4_1
-    );
-            
-    INTCON_sX4_2: INTCON_D
-    generic map (
-        DELAY => 21 ns
-    )
-    port map (
-        X => sw_i(3),
-        Y => sX4_2
-    );           
-    
+    sX4_0 <= transport sw_i(3) after 13 ns;
+    sX4_1 <= transport sw_i(3) after 16 ns;
+    sX4_2 <= transport sw_i(3) after 21 ns;          
+   
     INV_D_0: INV_D port map (
         X => sX3_0,
         Y => snX3_0
@@ -129,37 +83,22 @@ begin
     AND2_D_0: AND2_D port map (
         X1 => sX3_1,
         X2 => snX4_1,
-        Y => sY1_0
+        Y => sY1
     );
     
     AND2_D_1: AND2_D port map (
         X1 => snX3_1,
         X2 => sX4_1,
-        Y => sY2_0
+        Y => sY2
     );
         
     AND2_D_2: AND2_D port map (
         X1 => sX3_2,
         X2 => sX4_2,
-        Y => sY3_0
+        Y => sY3
     );
     
-    INTCON_sY1: INTCON_D port map (
-        X => sY1_0,
-        Y => sY1_1
-    );
-    
-    INTCON_sY2: INTCON_D port map (
-        X => sY2_0,
-        Y => sY2_1
-    );
-    
-    INTCON_sY3: INTCON_D port map (
-        X => sY3_0,
-        Y => sY3_1
-    );
-    
-    led_o(0) <= sY1_1;
-    led_o(1) <= sY2_1;
-    led_o(2) <= sY3_1;
+    led_o(0) <= transport sY1 after 10 ns;
+    led_o(1) <= transport sY2 after 10 ns;
+    led_o(2) <= transport sY3 after 10 ns;
 end Structural;

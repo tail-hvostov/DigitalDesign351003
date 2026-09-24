@@ -6,7 +6,7 @@ entity COMP3_D_TB is
 end entity COMP3_D_TB;
 
 architecture Behavioral of COMP3_D_TB is
-    constant T          :   time := 200 ns;
+    constant T          :   time := 400 ns;
     constant N          :   integer := 3;
     
     signal sw_i, led_o  :   std_logic_vector(15 downto 0);

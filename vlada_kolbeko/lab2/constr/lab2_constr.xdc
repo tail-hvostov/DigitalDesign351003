@@ -52,4 +52,6 @@ set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets BISTABLE/INV_0/LUT_INV_0]
 set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets BISTABLE/INV_1/LUT_INV_0]
 
 ## Allow loop for controllable bistable element
-set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets led_o_OBUF[1]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets BISTABLE/INV_0/led_o[1]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets BISTABLE/INV_1/LUT_INV_0_i_1]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets BISTABLE/INV_0/LUT_INV_0_i_1__0]

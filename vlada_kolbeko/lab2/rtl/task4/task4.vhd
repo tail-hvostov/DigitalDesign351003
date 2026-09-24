@@ -2,6 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity COMP3 is
+    generic (
+        N : natural := 3 
+    );
     port (
         sw_i    : in    std_logic_vector(15 downto 0);  -- A = sw_i[2:0], B = sw_i[5:3]
         led_o   : out   std_logic_vector(15 downto 0)   -- E = led_o[2], G = led_o[1], L = led_o[0]
@@ -9,9 +12,8 @@ entity COMP3 is
 end entity COMP3;
 
 architecture Structural of COMP3 is
-    signal pE1, pE2 :   std_logic;
-    signal pG1, pG2 :   std_logic;
-    signal pL1, pL2 :   std_logic;
+    signal pE, pG, pL   :   std_logic_vector(0 to N);
+    signal E, G, L      :   std_logic_vector(0 to N - 1);
     
     component COMP1 is
         port (
@@ -23,36 +25,28 @@ architecture Structural of COMP3 is
 begin
     led_o(15 downto 3) <= (others => '0');
     
-    COMP1_0: COMP1 port map (
-        A => sw_i(0),
-        B => sw_i(3),
-        pE => '0',
-        pG => '0',
-        pL => '0',
-        E => pE1,
-        G => pG1,
-        L => pL1
-    );
-
-    COMP1_1: COMP1 port map (
-        A => sw_i(1),
-        B => sw_i(4),
-        pE => pE1,
-        pG => pG1,
-        pL => pL1,
-        E => pE2,
-        G => pG2,
-        L => pL2
-    );
+    pE(0) <= '0';
+    pG(0) <= '0';
+    pL(0) <= '0';
     
-    COMP1_2: COMP1 port map (
-        A => sw_i(2),
-        B => sw_i(5),
-        pE => pE2,
-        pG => pG2,
-        pL => pL2,
-        E => led_o(2),
-        G => led_o(1),
-        L => led_o(0)
-    );
+    COMP: for i in 0 to N - 1 generate
+        COMP1_i: COMP1 port map (
+            A => sw_i(i),
+            B => sw_i(i + N),
+            pE => pE(i),
+            pL => pL(i),
+            pG => pG(i),
+            E => E(i),
+            G => G(i),
+            L => L(i)
+        );
+        
+        pE(i + 1) <= E(i);
+        pG(i + 1) <= G(i);
+        pL(i + 1) <= L(i);        
+    end generate;
+    
+    led_o(2) <= E(N - 1);
+    led_o(1) <= G(N - 1);
+    led_o(0) <= L(N - 1);
 end Structural;

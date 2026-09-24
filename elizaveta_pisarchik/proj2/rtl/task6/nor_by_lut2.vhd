@@ -12,14 +12,19 @@ entity NOR_LUT is
 end entity;
 
 architecture structural of NOR_LUT is
+    signal temp : std_logic;
 begin
+     temp <= a after 5 ns;
+
   LUT_INV : LUT2
     generic map(
       INIT => "0001"
     )
-    port map(
-      I0 => a,
+    
+    port map (
+      I0 => temp,
       I1 => b,
-      O  => f
+      O => f
     );
+    
 end architecture;
